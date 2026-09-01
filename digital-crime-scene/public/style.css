@@ -118,3 +118,37 @@ section {
 #viewer p {
     color: #888;
 }
+
+.timeline-event {
+    display: flex;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #292d33;
+}
+
+.timeline-time {
+    width: 100px;
+
+    color: #888;
+
+    font-weight: bold;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-content strong {
+    font-size: 14px;
+}
+
+.timeline-content p {
+    margin: 7px 0;
+
+    color: #aaa;
+}
+
+.timeline-content small {
+    color: #666;
+}

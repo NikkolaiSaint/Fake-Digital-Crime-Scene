@@ -1,5 +1,61 @@
 const viewer = document.getElementById("viewer");
+    const timeline = [
+    {
+        time: "18:32:04",
+        type: "USER LOGIN",
+        description: 'User "alex" logged into workstation',
+        severity: "NORMAL"
+    },
 
+    {
+        time: "18:37:12",
+        type: "USB CONNECTED",
+        description: "Device USB-001 connected",
+        severity: "WARNING"
+    },
+
+    {
+        time: "18:39:42",
+        type: "WEB ACTIVITY",
+        description: "Suspicious website visited",
+        severity: "WARNING"
+    },
+
+    {
+        time: "18:41:22",
+        type: "FILE CREATED",
+        description: "strange.exe downloaded",
+        severity: "WARNING"
+    },
+
+    {
+        time: "18:42:03",
+        type: "PROGRAM EXECUTED",
+        description: "strange.exe started",
+        severity: "ERROR"
+    },
+
+    {
+        time: "18:46:01",
+        type: "FILE MODIFIED",
+        description: "password.txt modified",
+        severity: "WARNING"
+    },
+
+    {
+        time: "18:47:13",
+        type: "FILE DELETED",
+        description: "password.txt deleted",
+        severity: "ERROR"
+    },
+
+    {
+        time: "18:51:08",
+        type: "USB REMOVED",
+        description: "USB-001 disconnected",
+        severity: "NORMAL"
+    }
+];
 const evidence = {
 
     Documents: [
@@ -191,3 +247,47 @@ function showDetails(item) {
     `;
 
 }
+
+function showTimeline() {
+
+    viewer.innerHTML = `
+        <h3>FORENSIC TIMELINE</h3>
+        <hr>
+        <div id="timeline"></div>
+    `;
+
+    const timelineContainer = document.getElementById("timeline");
+
+    timeline.forEach(event => {
+
+        const eventElement = document.createElement("div");
+
+        eventElement.className = "timeline-event";
+
+        eventElement.innerHTML = `
+            <div class="timeline-time">
+                ${event.time}
+            </div>
+
+            <div class="timeline-content">
+
+                <strong>${event.type}</strong>
+
+                <p>${event.description}</p>
+
+                <small>
+                    Severity: ${event.severity}
+                </small>
+
+            </div>
+        `;
+
+        timelineContainer.appendChild(eventElement);
+
+    });
+}
+const timelineButton = document.getElementById("timeline-button");
+
+timelineButton.addEventListener("click", () => {
+    showTimeline();
+});
